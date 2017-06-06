@@ -4,13 +4,19 @@ import matplotlib.pyplot as plt
 from scipy.stats import norm
 import sys, os
 
-def calcVar(V0, theta, n, mu, xi):
+def calcVar(V0, theta, n, mu, xi, a=None):
 	dt = theta/n
 	nu = np.random.normal(0, 1, n)
 	V1 = [V0]
 	V2 = [V0]
+	change = (a != None)
+
 	for i in range(1, n+1):
+		if change:
+			mu = a*(np.sqrt(V0) - np.sqrt(V1[i-1]))
 		V1 += [V1[i-1]*np.exp((mu - xi*xi/2)*dt + nu[i-1]*xi*np.sqrt(dt))]
+		if change:
+			mu = a*(np.sqrt(V0) - np.sqrt(V2[i-1]))
 		V2 += [V2[i-1]*np.exp((mu - xi*xi/2)*dt - nu[i-1]*xi*np.sqrt(dt))]
 	return np.array(V1), np.array(V2)
 
@@ -21,10 +27,10 @@ def BlackScholes(S, K, sigma, theta, r):
 	return S*No.cdf(d1) - K*np.exp(-r*theta)*No.cdf(d2)
 
 
-def HullWhite1(S, K, sigma0, theta, r, mu, xi, n, N):
+def HullWhite1(S, K, sigma0, theta, r, mu, xi, n, N, a=None):
 	moy = 0
 	for i in range(N):
-		V1, V2 = calcVar(sigma0*sigma0, theta, n, mu, xi)
+		V1, V2 = calcVar(sigma0*sigma0, theta, n, mu, xi, a)
 		sigma1 = np.sqrt(np.mean(V1))
 		sigma2 = np.sqrt(np.mean(V2))
 		p1 = BlackScholes(S, K, sigma1, theta, r)
@@ -34,7 +40,7 @@ def HullWhite1(S, K, sigma0, theta, r, mu, xi, n, N):
 	moy = moy/N
 	return moy
 
-def curbHW1(sigma0, theta, r, mu, xi, n, N, start=0.75, stop=1.25, step = 0.01):
+def curbHW1(sigma0, theta, r, mu, xi, n, N, start=0.75, stop=1.25, step = 0.01, a=None):
 	beta = start
 	tab = []
 	l = []
@@ -42,7 +48,7 @@ def curbHW1(sigma0, theta, r, mu, xi, n, N, start=0.75, stop=1.25, step = 0.01):
 	p_old = 0
 	p_new = 0
 	while beta < stop:
-		tab += [HullWhite1(beta, 1, sigma0, theta, r, mu, xi, n, N)]
+		tab += [HullWhite1(beta, 1, sigma0, theta, r, mu, xi, n, N, a)]
 		l += [BlackScholes(beta, 1, sigma0, theta, r)]
 		beta += step
 		p_new = int((beta-start)*100/(stop-start))
