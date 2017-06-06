@@ -16,7 +16,7 @@ def calcVar(V0, theta, n, mu, xi):
 
 def BlackScholes(S, K, sigma, theta, r):
 	No = norm(0,1)
-	d1 = (np.log(S/K) + (r + sigma*sigma/2)*theta)/(sigma*np.sqrt(theta))
+	d1 = (np.log(S/K) + (r + (sigma*sigma/2))*theta)/(sigma*np.sqrt(theta))
 	d2 = d1 - sigma*np.sqrt(theta)
 	return S*No.cdf(d1) - K*np.exp(-r*theta)*No.cdf(d2)
 
@@ -37,11 +37,13 @@ def HullWhite1(S, K, sigma0, theta, r, mu, xi, n, N):
 def curbHW1(sigma0, theta, r, mu, xi, n, N, start=0.75, stop=1.25, step = 0.01):
 	beta = start
 	tab = []
+	l = []
 	num = (stop-start)/step
 	p_old = 0
 	p_new = 0
 	while beta < stop:
 		tab += [HullWhite1(beta, 1, sigma0, theta, r, mu, xi, n, N)]
+		l += [BlackScholes(beta, 1, sigma0, theta, r)]
 		beta += step
 		p_new = int((beta-start)*100/(stop-start))
 		if p_new > p_old:
@@ -53,6 +55,14 @@ def curbHW1(sigma0, theta, r, mu, xi, n, N, start=0.75, stop=1.25, step = 0.01):
 				print('#', end='')
 				sys.stdout.flush()
 	print('\n')
-	return tab
+	prop = np.linspace(start, stop, num+1)
+	plt.figure()
+	plt.plot(prop, tab, label = "Hull-White")
+	plt.plot(prop, l, label = "Black-Scholes")
+	plt.legend()
+	plt.show()
+	return prop, tab, l
+
+
 
 
