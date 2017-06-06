@@ -55,13 +55,17 @@ def curbHW1(sigma0, theta, r, mu, xi, n, N, start=0.75, stop=1.25, step = 0.01):
 				print('#', end='')
 				sys.stdout.flush()
 	print('\n')
-	prop = np.linspace(start, stop, num+1)
+	prop = np.linspace(start, stop, len(tab))
 	plt.figure()
 	plt.plot(prop, tab, label = "Hull-White")
 	plt.plot(prop, l, label = "Black-Scholes")
 	plt.legend()
 	plt.show()
-	return prop, tab, l
+	bias = 100*(np.array(tab)-np.array(l))/(np.array(l)+1e-10)
+	plt.figure()
+	plt.plot(prop, bias)
+	plt.show()
+	return prop, tab, l, bias
 
 
 
