@@ -27,20 +27,23 @@ def BlackScholes(S, K, sigma, theta, r):
 	return S*No.cdf(d1) - K*np.exp(-r*theta)*No.cdf(d2)
 
 
-def HullWhite1(S, K, sigma0, theta, r, mu, xi, n, N, a=None):
+def HullWhite1(S, K, sigma0, theta, r, mu, xi, n, N, a=None, rho=None):
 	moy = 0
 	for i in range(N):
-		V1, V2 = calcVar(sigma0*sigma0, theta, n, mu, xi, a)
-		sigma1 = np.sqrt(np.mean(V1))
-		sigma2 = np.sqrt(np.mean(V2))
-		p1 = BlackScholes(S, K, sigma1, theta, r)
-		p2 = BlackScholes(S, K, sigma2, theta, r)
-		y = (p1+p2)/2
-		moy += y
+		if rho==None:
+			V1, V2 = calcVar(sigma0*sigma0, theta, n, mu, xi, a)
+			sigma1 = np.sqrt(np.mean(V1))
+			sigma2 = np.sqrt(np.mean(V2))
+			p1 = BlackScholes(S, K, sigma1, theta, r)
+			p2 = BlackScholes(S, K, sigma2, theta, r)
+			y = (p1+p2)/2
+			moy += y
+		else:
+			moy += calcVarPrice(sigma0*sigma0, S, K, theta, n, r, mu, xi, rho, a)
 	moy = moy/N
 	return moy
 
-def curbHW1(sigma0, theta, r, mu, xi, n, N, start=0.75, stop=1.25, step = 0.01, a=None):
+def curbHW1(sigma0, theta, r, mu, xi, n, N, start=0.75, stop=1.25, step = 0.01, a=None, rho=0):
 	beta = start
 	tab = []
 	l = []
@@ -48,7 +51,7 @@ def curbHW1(sigma0, theta, r, mu, xi, n, N, start=0.75, stop=1.25, step = 0.01, 
 	p_old = 0
 	p_new = 0
 	while beta < stop:
-		tab += [HullWhite1(beta, 1, sigma0, theta, r, mu, xi, n, N, a)]
+		tab += [HullWhite1(beta, 1, sigma0, theta, r, mu, xi, n, N, a, rho)]
 		l += [BlackScholes(beta, 1, sigma0, theta, r)]
 		beta += step
 		p_new = int((beta-start)*100/(stop-start))
@@ -76,7 +79,7 @@ def curbHW1(sigma0, theta, r, mu, xi, n, N, start=0.75, stop=1.25, step = 0.01, 
 
 
 
-def calcVarPrice(V0, S0, theta, n, mu, xi, rho, a=None):
+def calcVarPrice(V0, S0, K, theta, n, r, mu, xi, rho, a=None):
 	S1 = [S0]
 	S2 = [S0]
 	S3 = [S0]
@@ -89,22 +92,22 @@ def calcVarPrice(V0, S0, theta, n, mu, xi, rho, a=None):
 	nu = np.random.normal(0, 1, n)
 	u = np.random.normal(0, 1, n)
 	for i in range(1, n+1):
-		S1 += [S1[i-1]*np.exp((r-V1[i-1])*dt + u[i-1]*np.sqrt(V1[i-1]*dt))]
+		S1 += [S1[i-1]*np.exp((r-V1[i-1]/2)*dt + u[i-1]*np.sqrt(V1[i-1]*dt))]
 		V1 += [V1[i-1]*np.exp((mu - xi*xi/2)*dt + rho*u[i-1]*xi*np.sqrt(dt) + np.sqrt(1 - rho*rho)*nu[i-1]*xi*np.sqrt(dt))]
-		S2 += [S2[i-1]*np.exp((r-V2[i-1])*dt - u[i-1]*np.sqrt(V2[i-1]*dt))]
+		S2 += [S2[i-1]*np.exp((r-V2[i-1]/2)*dt - u[i-1]*np.sqrt(V2[i-1]*dt))]
 		V2 += [V2[i-1]*np.exp((mu - xi*xi/2)*dt - rho*u[i-1]*xi*np.sqrt(dt) + np.sqrt(1 - rho*rho)*nu[i-1]*xi*np.sqrt(dt))]
-		S3 += [S3[i-1]*np.exp((r-V3[i-1])*dt + u[i-1]*np.sqrt(V3[i-1]*dt))]
+		S3 += [S3[i-1]*np.exp((r-V3[i-1]/2)*dt + u[i-1]*np.sqrt(V3[i-1]*dt))]
 		V3 += [V3[i-1]*np.exp((mu - xi*xi/2)*dt + rho*u[i-1]*xi*np.sqrt(dt) - np.sqrt(1 - rho*rho)*nu[i-1]*xi*np.sqrt(dt))]
-		S4 += [S4[i-1]*np.exp((r-V4[i-1])*dt - u[i-1]*np.sqrt(V4[i-1]*dt))]
+		S4 += [S4[i-1]*np.exp((r-V4[i-1]/2)*dt - u[i-1]*np.sqrt(V4[i-1]*dt))]
 		V4 += [V4[i-1]*np.exp((mu - xi*xi/2)*dt - rho*u[i-1]*xi*np.sqrt(dt) - np.sqrt(1 - rho*rho)*nu[i-1]*xi*np.sqrt(dt))]
 	S1 = np.array(S1)
 	S2 = np.array(S2)
 	S3 = np.array(S3)
 	S4 = np.array(S4)
-	p1 = np.exp(-r*theta)*max(S1[n], 0)
-	p2 = np.exp(-r*theta)*max(S2[n], 0)
-	p3 = np.exp(-r*theta)*max(S3[n], 0)
-	p4 = np.exp(-r*theta)*max(S4[n], 0)
+	p1 = np.exp(-r*theta)*max(S1[n]-K, 0)
+	p2 = np.exp(-r*theta)*max(S2[n]-K, 0)
+	p3 = np.exp(-r*theta)*max(S3[n]-K, 0)
+	p4 = np.exp(-r*theta)*max(S4[n]-K, 0)
 	return (p1+p2+p3+p4)/4
 
 
