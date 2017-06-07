@@ -29,6 +29,7 @@ def BlackScholes(S, K, sigma, theta, r):
 
 def HullWhite1(S, K, sigma0, theta, r, mu, xi, n, N, a=None, rho=None):
 	moy = 0
+	sigma = 0
 	for i in range(N):
 		if rho==None:
 			V1, V2 = calcVar(sigma0*sigma0, theta, n, mu, xi, a)
@@ -39,19 +40,25 @@ def HullWhite1(S, K, sigma0, theta, r, mu, xi, n, N, a=None, rho=None):
 			y = (p1+p2)/2
 			moy += y
 		else:
-			moy += calcVarPrice(sigma0*sigma0, S, K, theta, n, r, mu, xi, rho, a)
+			res = calcVarPrice(sigma0*sigma0, S, K, theta, n, r, mu, xi, rho, a)
+			moy += res[0]
+			sigma += res[1]
 	moy = moy/N
-	return moy
+	sigma = sigma/N
+	return moy, sigma
 
 def curbHW1(sigma0, theta, r, mu, xi, n, N, start=0.75, stop=1.25, step = 0.01, a=None, rho=0):
 	beta = start
 	tab = []
 	l = []
+	sig = []
 	num = (stop-start)/step
 	p_old = 0
 	p_new = 0
 	while beta < stop:
-		tab += [HullWhite1(beta, 1, sigma0, theta, r, mu, xi, n, N, a, rho)]
+		res = HullWhite1(beta, 1, sigma0, theta, r, mu, xi, n, N, a, rho)
+		tab += [res[0]]
+		sig += [res[1]]
 		l += [BlackScholes(beta, 1, sigma0, theta, r)]
 		beta += step
 		p_new = int((beta-start)*100/(stop-start))
@@ -74,7 +81,11 @@ def curbHW1(sigma0, theta, r, mu, xi, n, N, start=0.75, stop=1.25, step = 0.01, 
 	plt.figure()
 	plt.plot(prop, bias)
 	plt.show()
-	return prop, tab, l, bias
+	plt.figure()
+	plt.plot(prop, sig)
+	plt.grid()
+	plt.show()
+	return prop, tab, l, bias, sig
 
 
 
@@ -104,11 +115,20 @@ def calcVarPrice(V0, S0, K, theta, n, r, mu, xi, rho, a=None):
 	S2 = np.array(S2)
 	S3 = np.array(S3)
 	S4 = np.array(S4)
+	V1 = np.array(V1)
+	V2 = np.array(V2)
+	V3 = np.array(V3)
+	V4 = np.array(V4)
 	p1 = np.exp(-r*theta)*max(S1[n]-K, 0)
 	p2 = np.exp(-r*theta)*max(S2[n]-K, 0)
 	p3 = np.exp(-r*theta)*max(S3[n]-K, 0)
 	p4 = np.exp(-r*theta)*max(S4[n]-K, 0)
-	return (p1+p2+p3+p4)/4
+	sigma1 = np.mean(np.sqrt(V1))
+	sigma2 = np.mean(np.sqrt(V2))
+	sigma3 = np.mean(np.sqrt(V3))
+	sigma4 = np.mean(np.sqrt(V4))
+	return (p1+p2+p3+p4)/4, (sigma1+sigma2+sigma3+sigma4)/4 
+
 
 
 
