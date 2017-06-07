@@ -90,7 +90,7 @@ def curbHW1(sigma0, theta, r, mu, xi, n, N, start=0.75, stop=1.25, step = 0.01, 
 
 
 
-def calcVarPrice(V0, S0, K, theta, n, r, mu, xi, rho, a=None):
+def calcVarPrice(V0, S0, K, theta, n, r, mu, xi, rho, a=None, final = False):
 	S1 = [S0]
 	S2 = [S0]
 	S3 = [S0]
@@ -123,11 +123,56 @@ def calcVarPrice(V0, S0, K, theta, n, r, mu, xi, rho, a=None):
 	p2 = np.exp(-r*theta)*max(S2[n]-K, 0)
 	p3 = np.exp(-r*theta)*max(S3[n]-K, 0)
 	p4 = np.exp(-r*theta)*max(S4[n]-K, 0)
-	sigma1 = np.mean(np.sqrt(V1))
+	if final:
+		sigma1 = V1[n]
+		sigma2 = V2[n]
+		sigma3 = V3[n]
+		sigma4 = V4[n]
+		return  (S1[n]+S2[n]+S3[n]+S4[n])/4, (sigma1+sigma2+sigma3+sigma4)/4	
+	sigma1 = np.mean(np.sqrt(V1))	
 	sigma2 = np.mean(np.sqrt(V2))
 	sigma3 = np.mean(np.sqrt(V3))
 	sigma4 = np.mean(np.sqrt(V4))
-	return (p1+p2+p3+p4)/4, (sigma1+sigma2+sigma3+sigma4)/4 
+	return (p1+p2+p3+p4)/4, (sigma1+sigma2+sigma3+sigma4)/4
+
+
+def smile(V0, S0, theta, n, N, r, mu, xi, rho, a=None, num=100, M = None):
+	S = []
+	V = []
+	tab = np.zeros(num) + 1e-10
+	E = np.zeros(num)
+	p_old = 0
+	p_new = 0
+	for i in range(N):
+		res = calcVarPrice(V0, S0, 1, theta, n, r, mu, xi, rho, a, True)
+		S += [res[0]]
+		V += [res[1]]
+		p_new = int(i*100/N)
+		if p_new > p_old:
+			p_old = p_new
+			if p_new in [10, 20, 30, 40, 50, 60, 70, 80, 90]:
+				print(p_new, end='')
+				sys.stdout.flush()
+			else:
+				print('#', end='')
+				sys.stdout.flush()
+	print('\n')
+	S = np.array(S)
+	V = np.array(V)
+	smin = min(S)
+	smax = max(S)
+	if M != None:
+		smax = min(smax, M)
+	stab = np.linspace(smin, smax, num)
+	for i in range(N):
+		ind = int((S[i]-smin)*(num-1)/(smax-smin))
+		if S[i] <= smax:
+			tab[ind] += 1
+			E[ind] += V[i]
+	E = E/tab
+	return stab, np.sqrt(E)
+
+  
 
 
 
