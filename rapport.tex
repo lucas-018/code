@@ -3,7 +3,11 @@
 \usepackage[T1]{fontenc}
 \usepackage[frenchb]{babel}
 \usepackage[pdftex]{graphicx}
+\usepackage{amsthm}
 \usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+
 \usepackage{float}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 
@@ -12,13 +16,25 @@
 
 \begin{document}
 \section*{Théorie}
-On s'intéresse ici à un modèle à volatilité stochastique: en notant $S_t$ le prix de l'actif à l'instant $t$ et $V_t = \sigma_t^2$ le carré de sa volatilité, on considère la dynamique suivante:
+On s'intéresse ici à un modèle à volatilité stochastique: en notant $S_t$ le prix de l'actif à l'instant $t$ et $V_t = \sigma_t^2$ sa volatilité, on considère la dynamique suivante:
 \begin{eqnarray*}
-dS_t &=& \phi S_t dt + \sqrt{V_t}dW_t^S\\
+dS_t &=& \phi S_t dt + \sqrt{V_t} S_t dW_t^S\\
 dV_t &=& \mu V_t dt + \xi V_t dW_t^V
 \end{eqnarray*}
 
 \section*{Simulations Numériques}
+On procède différamment suivant le cas dans lequel on se trouve:
+\begin{itemize}
+	\item la corrélation $\rho$ entre $W_t^S$ et $W_t^V$ est nulle, et on se retrouve dans la situation où l'on a simplement à calculer l'espérence du prix de Black-Scholes pour une volatilité égale à $\bar{V} = \int_0^T{V_t dt}$.
+	\item $\rho$ est non nul et on ne peut pas se servir de la formule de Black-Scholes.
+\end{itemize}
+\subsection*{Cas $\rho=0$}
+On adopte une méthode de monter-Carlo:\\
+On souhaite simuler $V_t$ pour pouvoir estimer plusieurs valeurs de $\bar{V}$, que l'on notera $\big(\bar{V_i}\big)_{1\leq i\leq N}$. On calcule ensuite les prix de Black-Scholes $BS\big(S_0, 0, T, \bar{V_i}\big)$ pour ces valeurs, et calculer:
+\begin{eqnarray*}
+\frac{1}{N}\sum\limits_{i=1}^N{BS\big(S_0, 0, T, \bar{V_i}\big)} \approx \mathbb{E}\Big[BS\big(S_0, 0, T, \bar{V}\big)\Big] = HW\big(S_0, 0, T, V_0\big)
+\end{eqnarray*}
+\subsection*{Cas $\rho \neq 0$}
 
 
 \end{document}
