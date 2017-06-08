@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.6.7)  7 JUN 2017 13:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.6.5)  8 JUN 2017 02:43
 entering extended mode
 **./rapport.tex
 (rapport.tex
@@ -353,7 +353,7 @@ Package: babel 2017/05/19 3.10 The Babel package
 *************************************
 * Local config file bblopts.cfg used
 *
-("C:\Program Files\MiKTeX 2.9\tex\latex\arabi\bblopts.cfg"
+(C:\Users\PCMOBILE\AppData\Roaming\MiKTeX\2.9\tex\latex\arabi\bblopts.cfg
 File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
  babel
 )
@@ -595,7 +595,7 @@ Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4751.
 \c@Hy@tempcnt=\count113
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\url\url.sty"
+(C:\Users\PCMOBILE\AppData\Roaming\MiKTeX\2.9\tex\latex\url\url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
@@ -635,24 +635,25 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 (rapport.aux)
 \openout1 = `rapport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Info: Redefining \degres on input line 17.
-LaTeX Info: Redefining \dots on input line 17.
-LaTeX Info: Redefining \up on input line 17.
- ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Info: Redefining \degres on input line 18.
+LaTeX Info: Redefining \dots on input line 18.
+LaTeX Info: Redefining \up on input line 18.
+
+(C:\Users\PCMOBILE\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count120
 \scratchdimen=\dimen121
@@ -688,7 +689,7 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 147.
 )
-Package hyperref Info: Link coloring ON on input line 17.
+Package hyperref Info: Link coloring ON on input line 18.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -698,65 +699,269 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count126
 )
-LaTeX Info: Redefining \ref on input line 17.
-LaTeX Info: Redefining \pageref on input line 17.
-LaTeX Info: Redefining \nameref on input line 17.
+LaTeX Info: Redefining \ref on input line 18.
+LaTeX Info: Redefining \pageref on input line 18.
+LaTeX Info: Redefining \nameref on input line 18.
 
 (rapport.out) (rapport.out)
 \@outlinefile=\write3
 \openout3 = `rapport.out'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 19.
+LaTeX Font Info:    Try loading font information for U+msa on input line 20.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 19.
+LaTeX Font Info:    Try loading font information for U+msb on input line 20.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 19.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 20.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\jknappen\ursfs.fd"
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 40.
- [1
+) [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 40.
+Overfull \hbox (76.09026pt too wide) in alignment at lines 30--33
+ [][][] []
+ []
+
+
+Overfull \hbox (39.12654pt too wide) in alignment at lines 41--43
+ [][][] []
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.50 \begin{eqnarray*}
+                       [1]
+Overfull \hbox (11.77892pt too wide) in paragraph at lines 56--59
+\T1/cmr/m/n/10 Et on a $\U/msb/m/n/10 E[][]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 S[
+] \OMS/cmsy/m/n/10   \OML/cmm/m/it/10 K\OT1/cmr/m/n/10 )[]\OMS/cmsy/m/n/10 jF[]
+[] \OT1/cmr/m/n/10 = \U/msb/m/n/10 E[][]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 S[] \
+OMS/cmsy/m/n/10   \OML/cmm/m/it/10 K\OT1/cmr/m/n/10 )[]\OMS/cmsy/m/n/10 j[]\OML
+/cmm/m/it/10 ; \OMS/cmsy/m/n/10 F[][] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 e[] []
+ []$\T1/cmr/m/n/10 ,
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 76--78
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--86
+
+ []
+
+
+Overfull \hbox (2.14122pt too wide) in paragraph at lines 89--90
+[]\T1/cmr/m/n/10 on si-mule un vec-teur gaus-sien $\OML/cmm/m/it/10 u \OMS/cmsy
+/m/n/10  N[]\OT1/cmr/m/n/10 (0\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1)$ \T1/cmr/m
+/n/10 qui re-pré-sente les $[]\OML/cmm/m/it/10 W[][][]$\T1/cmr/m/n/10 . 
+ []
+
+[3] <figure_1.png, id=39, 843.15pt x 464.73625pt>
+File: figure_1.png Graphic file (type png)
+ <use figure_1.png>
+Package pdftex.def Info: figure_1.png used on input line 107.
+(pdftex.def)             Requested size: 337.25401pt x 185.8912pt.
+
+<figure_2.png, id=41, 321.2pt x 238.8925pt>
+File: figure_2.png Graphic file (type png)
+ <use figure_2.png>
+Package pdftex.def Info: figure_2.png used on input line 114.
+(pdftex.def)             Requested size: 256.96034pt x 191.11424pt.
+ [4 <./figure_1.png>] <figure_3.png, id=49, 963.6pt x 459.7175pt>
+File: figure_3.png Graphic file (type png)
+ <use figure_3.png>
+Package pdftex.def Info: figure_3.png used on input line 123.
+(pdftex.def)             Requested size: 289.08223pt x 137.9163pt.
+ [5 <./figure_2.png> <./figure_3.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 139--141
+
+ []
+
+<hwrho_0,5.png, id=58, 321.2pt x 234.8775pt>
+File: hwrho_0,5.png Graphic file (type png)
+ <use hwrho_0,5.png>
+Package pdftex.def Info: hwrho_0,5.png used on input line 144.
+(pdftex.def)             Requested size: 224.83847pt x 164.41312pt.
+
+<hwrho_0,9.png, id=59, 321.2pt x 234.8775pt>
+File: hwrho_0,9.png Graphic file (type png)
+ <use hwrho_0,9.png>
+Package pdftex.def Info: hwrho_0,9.png used on input line 151.
+(pdftex.def)             Requested size: 224.83847pt x 164.41312pt.
+ [6 <./hwrho_0,5.png>] <smile01.png, id=68, 321.2pt x 238.8925pt>
+File: smile01.png Graphic file (type png)
+ <use smile01.png>
+Package pdftex.def Info: smile01.png used on input line 170.
+(pdftex.def)             Requested size: 224.83847pt x 167.2236pt.
+ [7 <./hwrho_0,9.png>] <smile02.png, id=76, 963.6pt x 459.7175pt>
+File: smile02.png Graphic file (type png)
+ <use smile02.png>
+Package pdftex.def Info: smile02.png used on input line 179.
+(pdftex.def)             Requested size: 289.08223pt x 137.9163pt.
+
+[8 <./smile01.png> <./smile02.png>]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 186.
+
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+Overfull \hbox (1.4154pt too wide) in paragraph at lines 368--368
+[]\T1/cmtt/m/n/10 V1 += [V1[i-1]*np.exp((mu - xi*xi/2)*dt + nu[i-1]*xi*np.sqrt(
+dt))][] 
+ []
+
+
+Overfull \hbox (1.4154pt too wide) in paragraph at lines 368--368
+[]\T1/cmtt/m/n/10 V2 += [V2[i-1]*np.exp((mu - xi*xi/2)*dt - nu[i-1]*xi*np.sqrt(
+dt))][] 
+ []
+
+
+Overfull \hbox (27.659pt too wide) in paragraph at lines 368--368
+[]\T1/cmtt/m/n/10 d1 = (np.log(S/K) + (r + (sigma*sigma/2))*theta)/(sigma*np.sq
+rt(theta))[] 
+ []
+
+
+Overfull \hbox (27.659pt too wide) in paragraph at lines 368--368
+[]\T1/cmtt/m/n/10 def HullWhite1(S, K, sigma0, theta, r, mu, xi, n, N, a=None, 
+rho=None):[] 
+ []
+
+
+Overfull \hbox (11.91284pt too wide) in paragraph at lines 368--368
+[]\T1/cmtt/m/n/10 res = calcVarPrice(sigma0*sigma0, S, K, theta, n, r, mu, xi, 
+rho, a)[] 
+ []
+
+[9]
+Overfull \hbox (153.62823pt too wide) in paragraph at lines 368--368
+[]\T1/cmtt/m/n/10 def curbHW1(sigma0, theta, r, mu, xi, n, N, start=0.75, stop=
+1.25, step = 0.01, a=None, rho=0):[] 
+ []
+
+[10]
+Overfull \hbox (59.1513pt too wide) in paragraph at lines 368--368
+[]\T1/cmtt/m/n/10 def calcVarPrice(V0, S0, K, theta, n, r, mu, xi, rho, a=None,
+ final = False):[] 
+ []
+
+
+Overfull \hbox (17.16156pt too wide) in paragraph at lines 368--368
+[]\T1/cmtt/m/n/10 S1 += [S1[i-1]*np.exp((r-V1[i-1]/2)*dt + u[i-1]*np.sqrt(V1[i-
+1]*dt))][] 
+ []
+
+
+Overfull \hbox (6.66412pt too wide) in paragraph at lines 368--368
+[]\T1/cmtt/m/n/10 V1 += [V1[i-1]*np.exp((mu - xi*xi/2)*dt + rho*u[i-1]*xi*np.sq
+rt(dt)[] 
+ []
+
+
+Overfull \hbox (17.16156pt too wide) in paragraph at lines 368--368
+[]\T1/cmtt/m/n/10 S2 += [S2[i-1]*np.exp((r-V2[i-1]/2)*dt - u[i-1]*np.sqrt(V2[i-
+1]*dt))][] 
+ []
+
+
+Overfull \hbox (6.66412pt too wide) in paragraph at lines 368--368
+[]\T1/cmtt/m/n/10 V2 += [V2[i-1]*np.exp((mu - xi*xi/2)*dt - rho*u[i-1]*xi*np.sq
+rt(dt)[] 
+ []
+
+
+Overfull \hbox (17.16156pt too wide) in paragraph at lines 368--368
+[]\T1/cmtt/m/n/10 S3 += [S3[i-1]*np.exp((r-V3[i-1]/2)*dt + u[i-1]*np.sqrt(V3[i-
+1]*dt))][] 
+ []
+
+
+Overfull \hbox (6.66412pt too wide) in paragraph at lines 368--368
+[]\T1/cmtt/m/n/10 V3 += [V3[i-1]*np.exp((mu - xi*xi/2)*dt + rho*u[i-1]*xi*np.sq
+rt(dt)[] 
+ []
+
+
+Overfull \hbox (17.16156pt too wide) in paragraph at lines 368--368
+[]\T1/cmtt/m/n/10 S4 += [S4[i-1]*np.exp((r-V4[i-1]/2)*dt - u[i-1]*np.sqrt(V4[i-
+1]*dt))][] 
+ []
+
+
+Overfull \hbox (6.66412pt too wide) in paragraph at lines 368--368
+[]\T1/cmtt/m/n/10 V4 += [V4[i-1]*np.exp((mu - xi*xi/2)*dt - rho*u[i-1]*xi*np.sq
+rt(dt)[] 
+ []
+
+
+Overfull \hbox (11.91284pt too wide) in paragraph at lines 368--368
+[]\T1/cmtt/m/n/10 return  (S1[n]+S2[n]+S3[n]+S4[n])/4, (sigma1+sigma2+sigma3+si
+gma4)/4[] 
+ []
+
+[11]
+Overfull \hbox (43.40515pt too wide) in paragraph at lines 368--368
+[]\T1/cmtt/m/n/10 def smile(V0, S0, theta, n, N, r, mu, xi, rho, a=None, num=10
+0, M = None):[] 
+ []
+
+
+Overfull \hbox (11.91284pt too wide) in paragraph at lines 368--368
+[]\T1/cmtt/m/n/10 #stab1, E1 = smile(0.15*0.15, 1, 5, 50, 10000, 0, 0, 1, 0.9, 
+M=1.25)[] 
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 369.
+[12]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 369.
  (rapport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 40.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 40.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 369.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 369.
 Package rerunfilecheck Info: File `rapport.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 40.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 369.
  ) 
 Here is how much of TeX's memory you used:
- 7759 strings out of 493323
- 107973 string characters out of 3139058
- 203685 words of memory out of 3000000
- 11180 multiletter control sequences out of 15000+200000
- 14819 words of font info for 51 fonts, out of 3000000 for 9000
+ 7841 strings out of 493323
+ 109515 string characters out of 3139058
+ 208763 words of memory out of 3000000
+ 11228 multiletter control sequences out of 15000+200000
+ 16573 words of font info for 54 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,11n,30p,285b,423s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\Emmanuel\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi6
-00\ecbx1200.pk> <C:\Users\Emmanuel\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jkn
-appen\ec\dpi600\ecrm1000.pk> <C:\Users\Emmanuel\AppData\Local\MiKTeX\2.9\fonts\
-pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk><C:/Program Files/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-mi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><
-C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Progra
-m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/symbols/msbm10.pfb>
-Output written on rapport.pdf (1 page, 104065 bytes).
+ 28i,11n,30p,493b,509s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\PCMOBILE\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi6
+00\ectt1000.pk> <C:\Users\PCMOBILE\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jkn
+appen\ec\dpi600\eccc1000.pk> <C:\Users\PCMOBILE\AppData\Local\MiKTeX\2.9\fonts\
+pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\Users\PCMOBILE\AppData\Local\MiKT
+eX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1000.pk> <C:\Users\PCMOBILE\AppDa
+ta\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk> <C:\Users\P
+CMOBILE\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk
+> <C:\Users\PCMOBILE\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi60
+0\ecrm1728.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex1
+0.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Progra
+m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmr5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/
+Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on rapport.pdf (13 pages, 405555 bytes).
 PDF statistics:
- 125 PDF objects out of 1000 (max. 8388607)
- 6 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 404 PDF objects out of 1000 (max. 8388607)
+ 26 named destinations out of 1000 (max. 500000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

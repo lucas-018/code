@@ -173,7 +173,7 @@ def smile(V0, S0, theta, n, N, r, mu, xi, rho, a=None, num=100, M = None):
 	return stab, np.sqrt(E)
 
   
-
+#stab1, E1 = smile(0.15*0.15, 1, 5, 50, 10000, 0, 0, 1, 0.9, M=1.25)
 
 
 
