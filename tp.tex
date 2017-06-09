@@ -17,7 +17,7 @@
 On s'intéresse à la propriété $\mathcal{P}(n)$: " un arbre binaire complet à $n$ feuilles possède $2n-1$ noeuds." définie pour $n \in \mathbb{N}^*$.\\
 \begin{itemize}
 \item Si $n = 1$, on a une feuille dans l'arbre $\mathcal{A}_1$, si cette feuille avait un parent, alors ce noeud parent aurait un autre enfant. comme l'arbre est fini, on trouverait au moins deux feuilles dans la branche de cet autre enfant, ce qui contredit le fait que $n = 1$ d'où la feuille de départ n'a pas de parent, c'est le seul noeud de l'arbre. On a donc bien $2n-1 = 1$ noeud et $\mathcal{P}(1)$ est vraie.\\
-\item supposons qu'il existe $n \in \mathbb{N}^*$ tel que $\mathcal{P}(n)$ est vraie. on considère alors un arbre binaire complet à $n+1$ feuilles, $\mathcal{A}_{n+1}$. soit $f$ une feuille de cet arbre. Elle a forcément un parent cfar sinon on se retrouve dans le cas précédent, et c'est la seule feuille de l'arbre, or $n+1\geq 2$. ce parent $p$ a un auitre enfant $f'$. si on considère l'arbre $\mathcal{A}_n$ que l'on définit comme l'arbre $\mathcal{A}_{n+1}$ sans $f$ et $f'$, on a bien un arbre complet à $n$ feuilles (où $p$ est devenu une feuille). on peut donc lui appliquer la peopriété $\mathcal{P}(n)$: il possède $2n-1$ noeuds. Comme $\mathcal{A}_{n+1}$ possède $2$ noeuds de plus que $\mathcal{A}_n$, ($f$ et $f'$), on a que $\mathcal{A}_{n+1}$ a bien, $2n-1+2 = 2(n+1)-1$ noeuds. d'où $\mathcal{P}(n+1)$ vraie.
+\item supposons qu'il existe $n \in \mathbb{N}^*$ tel que $\mathcal{P}(n)$ est vraie. on considère alors un arbre binaire complet à $n+1$ feuilles, $\mathcal{A}_{n+1}$. soit $f$ une feuille de cet arbre. Elle a forcément un parent cfar sinon on se retrouve dans le cas précédent, et c'est la seule feuille de l'arbre, or $n+1\geq 2$. ce parent $p$ a un autre enfant $f'$. Si on considère l'arbre $\mathcal{A}_n$ que l'on définit comme l'arbre $\mathcal{A}_{n+1}$ sans $f$ et $f'$, on a bien un arbre complet à $n$ feuilles (où $p$ est devenu une feuille). on peut donc lui appliquer la peopriété $\mathcal{P}(n)$: il possède $2n-1$ noeuds. Comme $\mathcal{A}_{n+1}$ possède $2$ noeuds de plus que $\mathcal{A}_n$, ($f$ et $f'$), on a que $\mathcal{A}_{n+1}$ a bien, $2n-1+2 = 2(n+1)-1$ noeuds. d'où $\mathcal{P}(n+1)$ vraie.
 \end{itemize}
 \subsection*{Question 3}
 Il suffit de considérer un arbre à deux noeuds, un parent $p$ et son enfant $f$, qui est donc une feuille. On a $n = 1$ et pourtant le nombre de noeuds est $2 \neq 1 = 2n-1$. 
@@ -36,6 +36,13 @@ L'équilibre dépend des différences de fréquence entre les caractères. Suppo
 On va alors fusionner les feuilles $f_2$ et $f_3$ d'une part (en un noeud $p_{23}$ de fréquence $0.2$) et les feuilles $f_4$ et $f_5$ d'autre part (en un noeud $p_{45}$ de fréquence $0.2$).
 Ensuite on va fusionner les noeuds $p_{23}$ et $p_{45}$, de fréquence plus faible que $f_1$, pour former $p_{2345}$, de fréquence $0.4$. Finalement on fusionnera $f_1$ et $
 p_{2345}$ pour obtenir l'arbre final, où $f_1$ sera de profondeur $1$ et $f_2,...,f_5$ de profondeur $3$. 
+
+\subsection*{Question 9}
+Il nous faut utiliser une file de priorité, en effet, l'algorithme consiste à traiter en priorité les éléments (noeuds) qui ont la fréquence d'apparition la plus faible, il faut donc pouvoir trouver efficacement ces noeuds-ci et y accéder, sans avoir à re-trier la liste à chaque fois.
+
+\subsection{Question 10}
+Ici j'ai utilisé une classe "Couple" plutôt que "pair". 
+
 
 
 \end{document}

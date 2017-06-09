@@ -4,7 +4,6 @@ using namespace std;
 
 
 int main(int argc, char** argv){
-	char* s = (char*)("salut");
-	cout<<s<<endl;
+	cout<<int('b' - 'a')<<endl;
 	return 0;
 }
