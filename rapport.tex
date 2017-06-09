@@ -19,20 +19,20 @@
 \maketitle
 \section*{Théorie}
 Le modèle de Hull et White que nous étudions dans ce rapport diffère du modèle standard de Black-Scholes au niveau de la volatilité de l’actif sous-jacent. Dans le modèle de Black-Scholes, la volatilité est en effet considérée comme constante.  Le modèle de Hull et White va considérer au contraire que cette dernière suit un processus stochastique et établir le prix d’un call européen dans ce cas de figure.\\ 
-Une conséquence de cette hypothèse supplémentaire est que, dans le cas où la volatilité et le prix de l’actif ne sont pas corrélés, le prix de l’option sera plus faible « at the money » (strike $K$ proche du prix $S_t$ de l’actif) que dans le modèle de Black-Scholes, et au contraire plus élevé lorsque l’option est « out of the money » (strike $K$ très supérieur ou inférieur au prix $S_t$ de  l’actif).\\
+Une conséquence de cette hypothèse supplémentaire que nous montrerons à l’issue de cette partie est que, dans le cas où la volatilité et le prix de l’actif ne sont pas corrélés, le prix de l’option sera plus faible « at the money » (strike $K$ proche du prix $S_t$ de l’actif) que dans le modèle de Black-Scholes, et au contraire plus élevé lorsque l’option est « out of the money » (strike $K$ très supérieur ou inférieur au prix $S_t$ de  l’actif).\\
 Sous ces hypothèses, on a donc le prix de l’actif sous-jacent $S$ et sa variance instantanée $V = \sigma^2$ qui suivent tous deux les processus stochastiques décrits par :
 \begin{eqnarray*}
 dS_t &=& \phi S_t dt + \sqrt{V_t}S_t dW^S_t\\
 dV_t &=& \mu V_t dt + \xi V_t dW^V_t
 \end{eqnarray*}
-On suppose ici que $\mu$ et $\xi$ ne dépendent pas de $S$, mais peuvent dépendre de $\sigma$ et $t$ (dans la pratique on considèrera ici $\xi$ constant). $\phi$ peut quant à lui dépendre de $S$, $\sigma$ et $t$. De plus, on pose $\rho$ la corrélation entre les mouvements browniens dz et dw.  On suppose de plus que le taux sans risque r est constant.\\
+On suppose ici que $\mu$ et $\xi$ ne dépendent pas de $S$, mais peuvent dépendre de $\sigma$ et $t$ (dans la pratique on considèrera ici $\xi$ constant). $\phi$ peut quant à lui dépendre de $S$, $\sigma$ et $t$. De plus, on pose $\rho$ la corrélation entre les deux mouvements browniens.  On suppose de plus que le taux sans risque r est constant.\\
 En notant $f(S_t, V_t, t)$ le prix en $t$ du call de strike $K$ d'échéance $T$ pour $S_t$ suivant la dynamique décrite, on peut montrer que $f$ est solution du problème:
 \begin{eqnarray*}
 \frac{\partial f}{\partial t} + \frac{1}{2}\Big(V_t S_t^2 \frac{\partial^2 f}{\partial S^2} + 2\rho \sigma_t^3 \xi S_t\frac{\partial^2 f}{\partial S\partial V} + \xi^2 V_t^2\frac{\partial^2 f}{\partial V^2}\Big) -rf &=& -rS_t\frac{\partial f}{\partial S} - \Big(\mu -\beta_V(\mu^* - r)\Big)V_t\frac{\partial f}{\partial V}\\
 f(S_T, V_T, T) &=& \big(S_T - K\big)_+
 \end{eqnarray*}
-avec $\mu^*$ vecteur des bénéfices instantanés attendus, et $\beta_V$ vecteur des bêtas par regression multiple de la variable $\frac{dV}{V}$.\\
-Une hypothèse importante  du modèle est que la volatilité n’a pas de risque systématique, ce qui entraîne que la partie $\beta_V(\mu^*- r)$ est nulle. de plus, si l'on suppose que $\rho = 0$ (ce que l'on discutera), on obtient:
+avec $\mu^*$ vecteur des bénéfices instantanés attendus, et $\beta_V$ vecteur des bêtas par régression multiple de la variable $\frac{dV}{V}$.\\
+Une hypothèse importante  du modèle est que la volatilité n’a pas de risque systématique, ce qui entraîne que la partie $\beta_V(\mu^*- r)$ est nulle. De plus, si l'on suppose que $\rho = 0$ (ce que l'on discutera), on obtient:
 \begin{eqnarray*}
 \frac{\partial f}{\partial t} + \frac{1}{2}\Big(V_t S_t^2 \frac{\partial^2 f}{\partial S^2} + \xi^2 V_t^2\frac{\partial^2 f}{\partial V^2}\Big) -rf &=& -rS_t\frac{\partial f}{\partial S}\\
 f(S_T, V_T, T) &=& \big(S_T - K\big)_+
@@ -41,7 +41,7 @@ Problème dont on peut trouver une solution:
 \begin{eqnarray*}
 f(S_t, V_t, t) = \mathbb{E}^*\Big[e^{-r(T-t)}\big(S_T-K\big)_+ \big| \mathcal{F_t}\Big] = e^{-r(T-t)}\int{\big(S_T-K\big)_+ p(S_T | S_t, V_t)dS_T}
 \end{eqnarray*}
-Le terme qui pose problème ici est bien sûr $p(S_T | S_t, V_t)$, qui peut être décomposer suivant la densité d'une autre variable, $\bar{V} = \frac{1}{T-t}\int_t^T{V_tdt}$:
+Le terme qui pose problème ici est bien sûr $p(S_T | S_t, V_t)$, qui peut être décomposé suivant la densité d'une autre variable, $\bar{V} = \frac{1}{T-t}\int_t^T{V_tdt}$:
 \begin{eqnarray*}
 p(S_T | S_t, V_t) = \int{p_1(S_t | \bar{V})p_2(\bar{V} | S_t, V_t)d\bar{V}}
 \end{eqnarray*}
@@ -50,7 +50,7 @@ Cela nous donne:
 \begin{eqnarray*}
 f(S_t, V_t, t) = \int\Big(	 e^{-r(T-t)}\int{\big(S_T-K\big)_+p_1(S_T | \bar{V})dS_T\Big)p_2(\bar{V} | S_t, V_t)d\bar{V}}
 \end{eqnarray*}
-En utilisant que la distribution de $log\big(\frac{S_T}{S_t}\big)$ conditionellement à $\bar{V}\}$ est normale de moyenne $(r - \bar{V}/2)(T-t)$ et de variance $\bar{V}(T-t)$, on a que $\frac{S_T}{S_t}$ quit, conditionnellement à $\bar{V}$, la loi de $exp\big((r-\bar{V}/2)(T-t) + \bar{V}(W^S_T - W^S_t)\big)$, qui est aussi la loi de $\frac{S^1_T}{S^1_t}$, où $S^1_t$ serait un processus stochastique défini par la dynamique:
+En utilisant que la distribution de $log\big(\frac{S_T}{S_t}\big)$ conditionnellement à $\bar{V}\}$ est normale de moyenne $(r - \bar{V}/2)(T-t)$ et de variance $\bar{V}(T-t)$, on a que $\frac{S_T}{S_t}$, conditionnellement à $\bar{V}$, est de loi de $exp\big((r-\bar{V}/2)(T-t) + \bar{V}(W^S_T - W^S_t)\big)$, qui est aussi la loi de $\frac{S^1_T}{S^1_t}$, où $S^1_t$ serait un processus stochastique défini par la dynamique:
 \begin{eqnarray*}
 dS^1_t = \phi S^1_t dt + \sqrt{\bar{V}}S^1_t dW^S_t
 \end{eqnarray*}
@@ -59,12 +59,31 @@ Et on a $\mathbb{E}^*\big[(S^1_T-K)_+ | \mathcal{F}_t\big] = \mathbb{E}^*\big[(S
 \begin{eqnarray*}
 f(S_t, V_t, t) = \int{C(\bar{V})p_2(\bar{V} | S_t, V_t)d\bar{V}} = \mathbb{E}^*\big[C(\bar{V}) | \mathcal{F}_t\big]
 \end{eqnarray*}
+Avec bien sûr
+\begin{eqnarray*}
+C(\bar{V}) &=& S_t N\big(d_1(\bar{V})\big) - e^{-r(T-t)}KN\big(d_2(\bar{V})\big)\\
+d_1(\bar{V}) &=& \frac{log(S_t/K) + (r + \bar{V}/2)(T-t)}{\sqrt{\bar{V}(T-t)}}\\
+d_2(\bar{V}) &=& d_1(\bar{V}) - \sqrt{\bar{V}(T_t)}\\
+N(x) &=& \frac{1}{\sqrt{2\pi}}\int_{-\infty}^x{e^{y^2/2}dy}
+\end{eqnarray*}
+\newline
+L’inégalité de Jensen (ou sa réciproque) nous donne $\mathbb{E}\big[C(.)\big] \geq C\big(\mathbb{E}[.]\big)$ lorsque $C$ est convexe ($\leq$ si concave). Étudions donc la dérivée seconde de $C(\bar{V})$.On obtient après calculs :
+\begin{eqnarray*}
+\frac{\partial^2 C}{\partial \bar{V}^2}(\bar{V}) = \frac{S_t\sqrt{T-t}}{4\bar{V}^{3/2}}\frac{\partial N}{\partial \bar{V}} \big(d_1(\bar{V})\big)\big(d_1(\bar{V})d_2(\bar{V}) - 1\big)
+\end{eqnarray*}
+Le signe de $C’’$ dépend du signe de $(d1d2 - 1)$. On en déduit que le point d’inflexion de $C$ est pour la valeur $V^*$ de $\bar{V}$ telle que $d1d2 = 1$ soit après calcul :
+\begin{eqnarray*}
+V^* = \frac{2}{T-t}\Big(\sqrt{1 + \big(log(S_t/K) + r(T-t))^2} - 1\Big)
+\end{eqnarray*}
+Pour $\bar{V} > V^*$, $C’’(\bar{V}) < 0$ et $C(\bar{V})$ est concave ; pour $\bar{V} < V^*$, $C(\bar{V})$ est convexe.\\
+C’est grâce à cette information qu’on peut conclure sur le prix de l’option comparé à celui donné par le modèle de Black-Scholes : si $S_t = Kexp(-r(T-t))$ ("at the money"), alors $V* = 0$ et $C$ est toujours une fonction concave puisque $V = \sigma^2 \geq 0$, ce qui veut dire que le prix de l’option sera toujours plus faible que le prix du modèle de Black-Scholes pour des options « at the money ». Au contraire, lorsque $log(S/K)$ tend vers $+\infty$ ou $-\infty$ c’est-à-dire que $S_t >> K$ ou $S << K$, $V^*$ devient arbitrairement grand, et on a plus de chance de se trouver dans la situation $\bar{V} \leq V^*$ et le prix de l’option sera ainsi plus grand que celui de Black-Scholes pour des options très « out of the money ».
+
 \newpage
 
 
 
 \section*{Simulations Numériques}
-On procède différamment suivant le cas dans lequel on se trouve:
+On procède différemment suivant le cas dans lequel on se trouve:
 \begin{itemize}
 	\item la corrélation $\rho$ entre $W_t^S$ et $W_t^V$ est nulle, et on se retrouve dans la situation où l'on a simplement à calculer l'espérence du prix de Black-Scholes pour une volatilité égale à $\bar{V} = \int_0^T{V_t dt}$.
 	\item $\rho$ est non nul et on ne peut pas se servir de la formule de Black-Scholes.
@@ -76,12 +95,12 @@ V_{t + \Delta t} = V_t exp\big((\mu - \xi^2/2)\Delta t + \xi (W^V_{t+\Delta t} -
 \end{eqnarray*}
 Avec $(W^V_{t + \Delta t} - W^V_t) \sim \sqrt{\Delta t}\mathcal{N}(0, 1)$.\\
 
-On adopte une méthode de monter-Carlo:\\
-On souhaite simuler $V_t$ pour pouvoir estimer plusieurs valeurs de $\bar{V}$, que l'on notera $\big(\bar{V_i}\big)_{1\leq i\leq N}$. On calcule ensuite les prix de Black-Scholes $BS\big(S_0, 0, T, \bar{V_i}\big)$ pour ces valeurs, et calculer:
+On adopte une méthode de Monte-Carlo:\\
+On souhaite simuler $V_t$ pour pouvoir estimer plusieurs valeurs de $\bar{V}$, que l'on notera $\big(\bar{V_i}\big)_{1\leq i\leq N}$. On calcule ensuite les prix de Black-Scholes $BS\big(S_0, 0, T, \bar{V_i}\big)$ pour ces valeurs puis :
 \begin{eqnarray*}
 \frac{1}{N}\sum\limits_{i=1}^N{BS\big(S_0, 0, T, \bar{V_i}\big)} \approx \mathbb{E}\Big[BS\big(S_0, 0, T, \bar{V}\big)\Big] = e^{rT}HW\big(S_0, 0, T, V_0\big)
 \end{eqnarray*}
-(Quite à effectuer un changement de variable, on suppose pour simplifier que l'on cherche en $0$ à claculer le prix du call d'échéance $T$.)\\
+(Quite à effectuer un changement de variable, on suppose pour simplifier que l'on cherche en $0$ à calculer le prix du call d'échéance $T$.)\\
 Pour cela on procède de la manière suivante:\\
 \begin{itemize}
 	\item On discrétise l'intervalle $[0, T]$ en $n$ pas de temps ($h = T/n$) , et on considère les instants $\big(t_k = \frac{kT}{n}\big)_{0\leq k\leq n}$.
@@ -153,14 +172,14 @@ On simule également dans le même temps trois autres prix en considérant les v
 \caption{Ecart relatif du prix par Hull-White par rapport à Black-Scholes (en \%) pour $\rho = 0.9$}
 \end{figure} 
 
-On constate que plus la corrélation est élevée entre $V$ et $S$ et plus le pris de Hull-White semble s'éloigner de celui de Black-Scholes. Cela n'est pas étonnant car le prix de Hull-White avec $\rho = 0$ ressemblait beaucoup à celui de black Scholes dans la manière avec laquelle il était obtenu, surtout si la volatilité variait peu autour de $V_0$.
+On constate que plus la corrélation est élevée entre $V$ et $S$ et plus le pris de Hull-White semble s'éloigner de celui de Black-Scholes. Cela n'est pas étonnant car le prix de Hull-White avec $\rho = 0$ ressemblait beaucoup à celui de Black-Scholes dans la manière avec laquelle il était obtenu, surtout si la volatilité variait peu autour de $V_0$.
 
 \subsection*{Smile de volatilité:}
-Pour déterminer le smile de volatilité, on peut s'inspirer de la dérivation de la volatilité locale proposée par Derman et Kani, qui permet de faire le lien entre valatilité locale (qui nous permet de tracer facilement le smile) et volatilité stochastique (celle dont on dispose et que l'on sait simuler).
+Pour déterminer le smile de volatilité, on peut s'inspirer de la dérivation de la volatilité locale proposée par Derman et Kani, qui permet de faire le lien entre volatilité locale (qui nous permet de tracer facilement le smile) et volatilité stochastique (celle dont on dispose et que l'on sait simuler).
 \begin{eqnarray*}
 V_{Loc}(K, T) = \mathbb{E}\big[V_T | S_T = K]
 \end{eqnarray*}
-Il nous faut donc calculer l'espérence du la volatilité stochastique conditionnellement à un certain nombre d'état du prix du sous-jacent. On continue à procéder par monte-Carlo, en simulant comme précédemment $N$ évolutions de prix d'actifs ainsi que leur volatilité $\big((S^i_k, V^i_k)_{1\leq k\leq n}\big)_{1\leq i\leq N}$ et en calculant pour des intervalles $I_j = [K_j, K_{j+1}]$ bien choisis:
+Il nous faut donc calculer l'espérance du la volatilité stochastique conditionnellement à un certain nombre d'états du prix du sous-jacent. On continue à procéder par Monte-Carlo, en simulant comme précédemment $N$ évolutions de prix d'actifs ainsi que leur volatilité $\big((S^i_k, V^i_k)_{1\leq k\leq n}\big)_{1\leq i\leq N}$ et en calculant pour des intervalles $I_j = [K_j, K_{j+1}]$ bien choisis:
 \begin{eqnarray*}
 V_{Loc}\Big(\frac{K_j + K_{j+1}}{2}, T\Big) = \sum\limits_{i=1}^N\frac{V^i_n 1_{\{S^i_n \in I_j\}}}{\sum{1_{\{S^i_n \in I_j\}}}}
 \end{eqnarray*}
@@ -172,7 +191,7 @@ V_{Loc}\Big(\frac{K_j + K_{j+1}}{2}, T\Big) = \sum\limits_{i=1}^N\frac{V^i_n 1_{
 \caption{Smile de volatilité pour $\rho = 0.9$, $T = 5$}
 \end{figure} 
 
-On peut voir que cette méthode a une faiblesse, puisque pour des valeurs extrêmes de $K$ on au moins de données par la simulation que pour les valeurs centrales, et donc l'approximation de l'espérance par Monte-Carlo est moins fiable (et on voit apparaître des oscillations). On peut palier ce problème en rêglant la taille des intervalles (mais en perdant en précision) ou en ajoutant des simulations (en augmentant $N$ et donc forcément le temps de calcul).
+On peut voir que cette méthode a une faiblesse, puisque pour des valeurs extrêmes de $K$ on a moins de données par la simulation que pour les valeurs centrales, et donc l'approximation de l'espérance par Monte-Carlo est moins fiable (et on voit apparaître des oscillations). On peut corriger ce problème en réglant la taille des intervalles (mais en perdant en précision) ou en ajoutant des simulations (en augmentant $N$ et donc forcément le temps de calcul).
 
 \begin{figure}[H]
 \begin{center}
@@ -233,7 +252,8 @@ def HullWhite1(S, K, sigma0, theta, r, mu, xi, n, N, a=None, rho=None):
 	sigma = sigma/N
 	return moy, sigma
 
-def curbHW1(sigma0, theta, r, mu, xi, n, N, start=0.75, stop=1.25, step = 0.01, a=None, rho=0):
+def curbHW1(sigma0, theta, r, mu, xi, n, N, start=0.75, stop=1.25, step = 0.01, 
+                                                                a=None, rho=0):
 	beta = start
 	tab = []
 	l = []
@@ -366,4 +386,11 @@ def smile(V0, S0, theta, n, N, r, mu, xi, rho, a=None, num=100, M = None):
 #plt.plot(stab1, E1)
 #plt.show()
 \end{verbatim}
+
+\section*{Références}
+\begin{itemize}
+\item "Calcul stochastique appliqué à la finance", Ioane Muni Toke\\
+\item "The Pricing of Option an Assets with stochastic volatility", John Hull \& Alan White, Journal of finance, 1987.
+\end{itemize}
+
 \end{document}
