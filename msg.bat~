@@ -1,0 +1,4 @@
+@echo off
+:a
+msg * salut
+msg * salut
